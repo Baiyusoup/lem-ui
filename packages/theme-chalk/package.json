@@ -1,0 +1,38 @@
+{
+  "name": "theme-chalk",
+  "version": "0.0.0",
+  "description": "lem ui styles",
+  "author": "Baiyusoup <1575727840@qq.com>",
+  "homepage": "https://github.com/Baiyusoup/lem-ui#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baiyusoup/lem-ui.git",
+    "directory": "packages/theme-chalk"
+  },
+  "scripts": {
+    "build": "rimraf ./lib/* && gulp build"
+  },
+  "bugs": {
+    "url": "https://github.com/Baiyusoup/lem-ui/issues"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.42.1"
+  },
+  "browserslist": [
+    "ie > 9",
+    "last 2 version",
+    "> 3%"
+  ]
+}

@@ -1,47 +1,32 @@
 /* eslint-disable import/default */
+import Button, {
+  ButtonSize,
+  ButtonType,
+} from '../packages/lem-ui/src/button/button'
 import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  const handler = () => {
+    setCount(count + 1)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button
-            type="button"
-            onClick={() => setCount((oldCount) => oldCount + 1)}
-          >
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <Button onClick={handler}>Default Button</Button>
+      <Button disabled>Disabled Button</Button>
+      <Button btnType={ButtonType.Danger}>Danger Button</Button>
+      <Button btnType={ButtonType.Primary}>Primary Button</Button>
+      <Button btnType={ButtonType.Link} href="#">
+        Link Button
+      </Button>
+      <Button disabled btnType={ButtonType.Link} href="#">
+        Link Button
+      </Button>
+      <div>{count}</div>
+      <div>
+        <Button size={ButtonSize.Large}>Default Button</Button>
+        <Button size={ButtonSize.Small}>Default Button</Button>
+      </div>
     </div>
   )
 }

@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     // 提示书写矛盾的样式
     'stylelint-declaration-block-no-ignored-properties',
+    'stylelint-scss',
   ],
   rules: {
     'plugin/declaration-block-no-ignored-properties': true,
@@ -28,6 +29,8 @@ module.exports = {
         ignorePseudoClasses: ['global'],
       },
     ],
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': true,
   },
   // stylelint 支持直接配置忽略文件
   ignoreFiles: ['node_modules/**/*', 'dist/**/*', 'public/**/*'],

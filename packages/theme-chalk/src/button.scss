@@ -1,0 +1,101 @@
+@import './variable//var.scss';
+@import './mixins/mixin';
+
+.lem-btn {
+  position: relative;
+  display: inline-block;
+  color: $body-color;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: $btn-border-width solid transparent;
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size,
+    $border-radius
+  );
+
+  box-shadow: $btn-box-shadow;
+  cursor: pointer;
+  transition: $btn-transition;
+
+  &.disabled,
+  &[disabled] {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+
+    > * {
+      pointer-events: none;
+    }
+  }
+}
+
+.lem-btn + .lem-btn {
+  margin-left: 10px;
+}
+
+.lem-btn-lg {
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $border-radius-lg
+  );
+}
+
+.lem-btn-sm {
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $border-radius-sm
+  );
+}
+
+.lem-btn-primary {
+  @include button-style($primary, $primary, $white);
+}
+
+.lem-btn-danger {
+  @include button-style($danger, $danger, $white);
+}
+
+.lem-btn-default {
+  @include button-style(
+    $white,
+    $gray-400,
+    $border-color,
+    $white,
+    $primary,
+    $primary
+  );
+}
+
+.lem-btn-link {
+  color: $btn-link-color;
+  font-weight: $font-weight-normal;
+  text-decoration: $link-decoration;
+  box-shadow: none;
+
+  &:hover {
+    color: $btn-link-hover-color;
+    text-decoration: $link-decoration;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: $link-decoration;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+}

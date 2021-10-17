@@ -1,8 +1,4 @@
-$bgColor: #fff;
-
-.box {
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  background-color: $bgColor;
-}
+@import './reset.scss';
+@import './mixins/mixin';
+@import './variable/var.scss';
+@import './button.scss';

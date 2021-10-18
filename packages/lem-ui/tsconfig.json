@@ -1,3 +1,11 @@
 {
-  "extends": "./tsconfig.lib.json"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["**/__tests__", "**/__test__", "**/demo"]
 }

@@ -1,10 +1,11 @@
 import React, { createRef, useState } from 'react'
-import { UserOutlined } from '@ant-design/icons'
+import { UserOutlined, TwitterOutlined } from '@ant-design/icons'
 import './app.css'
 import Layout from '../packages/lem-ui/src/layout'
 import Menu from '../packages/lem-ui/src/menu'
 import Pagination from '../packages/lem-ui/src/pagination'
 import Input from '../packages/lem-ui/src/input'
+import Tag from '../packages/lem-ui/src/tag'
 
 const { Header, Content, Footer, Aside } = Layout
 
@@ -42,6 +43,11 @@ function App() {
         </Aside>
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
+            <div>
+              <Tag>tag 1</Tag>
+              <Tag icon={<TwitterOutlined />}>tag 1</Tag>
+              <Tag color="#2db7f5">tag 1</Tag>
+            </div>
             <div>
               <Input
                 ref={inputRef}

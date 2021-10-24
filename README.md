@@ -13,5 +13,5 @@
 - [x] Pagination
 - [x] input
 - [ ] Form
-- [ ] Tag
+- [x] Tag
 - [ ] Modal

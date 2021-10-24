@@ -1,14 +1,16 @@
-import Pagination from '../packages/lem-ui/src/pagination'
-import React, { useState } from 'react'
+import React, { createRef, useState } from 'react'
+import { UserOutlined } from '@ant-design/icons'
+import './app.css'
 import Layout from '../packages/lem-ui/src/layout'
 import Menu from '../packages/lem-ui/src/menu'
-
-import './app.css'
+import Pagination from '../packages/lem-ui/src/pagination'
+import Input from '../packages/lem-ui/src/input'
 
 const { Header, Content, Footer, Aside } = Layout
 
 function App() {
   const [value, setValue] = useState(false)
+  const inputRef = createRef<HTMLInputElement>()
   const handleEvent = (payload: boolean) => {
     console.log('trigger')
     setValue(payload)
@@ -16,6 +18,11 @@ function App() {
   }
   const handleChange = (pageSize: number, currentPage: number) => {
     console.log(pageSize, currentPage)
+  }
+
+  const handleInput = () => {
+    console.log('input')
+    console.log(inputRef.current?.value)
   }
   return (
     <Layout>
@@ -35,7 +42,14 @@ function App() {
         </Aside>
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
-            Content
+            <div>
+              <Input
+                ref={inputRef}
+                onChange={handleInput}
+                placeholder="Enter your name"
+                prefix={UserOutlined}
+              />
+            </div>
             <Pagination onChange={handleChange} total={50} />
           </div>
         </Content>

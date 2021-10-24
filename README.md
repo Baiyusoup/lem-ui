@@ -10,8 +10,8 @@
 - [x] Layout
 - [x] Menu
 - [ ] Dropdown
-- [ ] Pagination
-- [ ] input
+- [x] Pagination
+- [x] input
 - [ ] Form
 - [ ] Tag
 - [ ] Modal

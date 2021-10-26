@@ -1,0 +1,109 @@
+@mixin fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+}
+
+.lem-pirate-modal {
+  @include fixed;
+
+  .lem-modal-mask {
+    @include fixed;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    filter: alpha(opacity=50);
+  }
+
+  .lem-modal-warp {
+    position: relative;
+    margin: 100px auto;
+    overflow: hidden;
+    outline: 0;
+
+    .lem-modal-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      width: 54px;
+      height: 54px;
+      font-size: 32px;
+      line-height: 54px;
+      text-align: center;
+
+      span {
+        display: inline-block;
+        width: 32px;
+        color: rgba(0, 0, 0, 0.65);
+        line-height: 32px;
+        transform: rotate(45deg);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .lem-modal-center {
+    top: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+  }
+
+  .lem-modal {
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 24px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    list-style: none;
+
+    .lem-modal-content {
+      position: relative;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 0;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+      .lem-modal-header {
+        padding: 16px 24px;
+        color: rgba(0, 0, 0, 0.65);
+        background: #fff;
+        border-bottom: 1px solid #e8e8e8;
+        border-radius: 4px 4px 0 0;
+
+        .lem-modal-title {
+          margin: 0;
+          color: rgba(0, 0, 0, 0.85);
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+
+      .lem-modal-body {
+        padding: 24px;
+        font-size: 14px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+
+      .lem-modal-footer {
+        padding: 10px 16px;
+        text-align: right;
+        border-top: 1px solid #e8e8e8;
+        border-radius: 0 0 4px 4px;
+
+        button {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

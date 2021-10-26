@@ -14,4 +14,4 @@
 - [x] input
 - [ ] Form
 - [x] Tag
-- [ ] Modal
+- [x] Modal

@@ -1,30 +1,27 @@
 import React, { createRef, useState } from 'react'
-import { UserOutlined, TwitterOutlined } from '@ant-design/icons'
 import './app.css'
 import Layout from '../packages/lem-ui/src/layout'
 import Menu from '../packages/lem-ui/src/menu'
-import Pagination from '../packages/lem-ui/src/pagination'
-import Input from '../packages/lem-ui/src/input'
-import Tag from '../packages/lem-ui/src/tag'
+import Modal from '../packages/lem-ui/src/modal'
 
 const { Header, Content, Footer, Aside } = Layout
 
 function App() {
-  const [value, setValue] = useState(false)
-  const inputRef = createRef<HTMLInputElement>()
-  const handleEvent = (payload: boolean) => {
-    console.log('trigger')
-    setValue(payload)
-    console.log(value)
+  const [visiable, setVisiable] = useState(false)
+
+  const handleCancel = () => {
+    console.log('cancel')
+    setVisiable(false)
   }
-  const handleChange = (pageSize: number, currentPage: number) => {
-    console.log(pageSize, currentPage)
+  const handleOk = () => {
+    console.log('ok')
+    setVisiable(false)
   }
 
-  const handleInput = () => {
-    console.log('input')
-    console.log(inputRef.current?.value)
+  const showModal = () => {
+    setVisiable(true)
   }
+
   return (
     <Layout>
       <Header>
@@ -38,26 +35,23 @@ function App() {
         </Menu>
       </Header>
       <Layout isVertical={true}>
-        <Aside collapsible collapsed={value} onCollapse={handleEvent}>
-          aside
-        </Aside>
+        <Aside>aside</Aside>
         <Content style={{ padding: '0 50px' }}>
           <div className="site-layout-content">
             <div>
-              <Tag>tag 1</Tag>
-              <Tag icon={<TwitterOutlined />}>tag 1</Tag>
-              <Tag color="#2db7f5">tag 1</Tag>
+              <button onClick={showModal}>点击</button>
             </div>
-            <div>
-              <Input
-                ref={inputRef}
-                onChange={handleInput}
-                placeholder="Enter your name"
-                prefix={UserOutlined}
-              />
-            </div>
-            <Pagination onChange={handleChange} total={50} />
           </div>
+          <Modal
+            visible={visiable}
+            title="测试"
+            onCancel={handleCancel}
+            onOk={handleOk}
+          >
+            <p>内容</p>
+            <p>内容</p>
+            <p>内容</p>
+          </Modal>
         </Content>
       </Layout>
       <Footer style={{ textAlign: 'center' }}>

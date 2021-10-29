@@ -1,10 +1,11 @@
+@import './variable/vars.scss';
+
 .lem-pagination {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  color: #000000d9;
-  font-size: 14px;
-  line-height: 1.5715;
+  margin: $pagination-mgy $pagination-mgx;
+  padding: $pagination-py $pagination-px;
+  color: $back;
+  font-size: $font-size-sm;
   list-style: none;
 }
 
@@ -16,14 +17,13 @@
 .lem-pagination-next {
   display: inline-block;
   min-width: 32px;
-  height: 32px;
-  color: #000000d9;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 32px;
+  height: $pagination-h;
+  color: $back;
+  line-height: $pagination-l-h;
   text-align: center;
   vertical-align: middle;
   list-style: none;
-  border-radius: 2px;
+  border-radius: $border-radius-round;
   outline: 0;
   cursor: pointer;
   transition: all 0.3s;
@@ -31,13 +31,13 @@
 
 .lem-pagination-button {
   display: block;
-  width: 100%;
-  height: 24px;
-  padding: 0;
+  width: $pagination-button-w;
+  height: $pagination-button-h;
+  padding: $pagination-button-padding;
   text-align: center;
-  background-color: #fff;
+  background-color: $secondary;
   border: none;
-  border-radius: 2px;
+  border-radius: $border-radius-round;
   outline: 0;
   cursor: pointer;
   transition: all 0.3s;

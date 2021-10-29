@@ -1,67 +1,64 @@
-.lem-input {
+@import './variable/vars.scss';
+
+@mixin inputHover {
+  border-color: $input-border-color;
+}
+
+@mixin inputFocus {
+  border-color: $input-border-color;
+  border-right-width: 1px !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+@mixin input {
   position: relative;
-  display: inline-block;
   box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 4px 11px;
-  color: #000000d9;
-  font-size: 14px;
-  line-height: 1.5715;
+  width: $input-w;
+  margin: $input-mgy $input-mgy;
+  padding: $input-py $input-px;
+  color: $input-color;
+  font-size: $input-font-size;
+  line-height: $input-l-h;
   list-style: none;
-  background-color: #fff;
+  background-color: $input-bg;
   background-image: none;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border: $input-border-w solid $input-border-color;
+  border-radius: $border-radius-round;
   transition: all 0.3s;
+}
+
+.lem-input {
+  display: inline-block;
+  outline: 0;
+  @include input();
 
   &:hover {
-    border-color: #40a9ff;
-    border-right-width: 1px !important;
+    @include inputHover();
   }
 
   &:focus {
-    border-color: #40a9ff;
-    border-right-width: 1px !important;
-    outline: 0;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    @include inputFocus();
   }
 }
 
 .lem-input-affix-wrapper {
-  position: relative;
   display: inline-flex;
-  width: 100%;
-  min-width: 0;
-  padding: 4px 11px;
-  color: #000000d9;
-  font-size: 14px;
-  line-height: 1.5715;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-  transition: all 0.3s;
+  @include input();
 
   &:hover {
-    border-color: #40a9ff;
-    border-right-width: 1px !important;
+    @include inputHover();
   }
 
   &:focus {
-    border-color: #40a9ff;
-    border-right-width: 1px !important;
-    outline: 0;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    @include inputFocus();
   }
 
   & > .lem-input {
     padding: 0;
     border: none;
-    outline: none;
 
     &:focus {
+      border: none;
       box-shadow: none;
     }
   }

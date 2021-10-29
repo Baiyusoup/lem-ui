@@ -1,3 +1,5 @@
+@import './variable/vars.scss';
+
 @mixin fixed {
   position: fixed;
   top: 0;
@@ -8,12 +10,12 @@
 }
 
 .lem-pirate-modal {
-  @include fixed;
+  @include fixed();
 
   .lem-modal-mask {
-    @include fixed;
+    @include fixed();
 
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.4);
     filter: alpha(opacity=50);
   }
 
@@ -21,7 +23,6 @@
     position: relative;
     margin: 100px auto;
     overflow: hidden;
-    outline: 0;
 
     .lem-modal-close {
       position: absolute;
@@ -47,62 +48,50 @@
 
   .lem-modal-center {
     top: 50%;
-    margin: 0 auto;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .lem-modal-warp.lem-modal-center {
+    margin: 0;
   }
 
   .lem-modal {
     position: relative;
     box-sizing: border-box;
-    margin: 0;
-    margin: 0 auto;
-    padding: 0;
-    padding-bottom: 24px;
-    color: rgba(0, 0, 0, 0.65);
-    font-size: 14px;
-    line-height: 1.5;
+    padding: $modal-py $modal-px;
+    color: $modal-color;
+    font-size: $modal-font-size;
     list-style: none;
+    background-color: $modal-bg;
+    border-radius: $modal-border-radius;
 
     .lem-modal-content {
       position: relative;
-      background-color: #fff;
       background-clip: padding-box;
-      border: 0;
-      border-radius: 4px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
       .lem-modal-header {
-        padding: 16px 24px;
-        color: rgba(0, 0, 0, 0.65);
-        background: #fff;
-        border-bottom: 1px solid #e8e8e8;
-        border-radius: 4px 4px 0 0;
+        padding: $modal-hd-py $modal-hd-px;
+        border-bottom: 1px solid $gray-300;
 
         .lem-modal-title {
           margin: 0;
-          color: rgba(0, 0, 0, 0.85);
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 22px;
+          font-weight: $font-w-5;
+          font-size: $font-size-base;
         }
       }
 
       .lem-modal-body {
-        padding: 24px;
-        font-size: 14px;
-        line-height: 1.5;
+        min-height: 165px;
+        padding: $modal-bd-py $modal-bd-px;
+        font-size: $font-size-sm;
         word-wrap: break-word;
       }
 
       .lem-modal-footer {
-        padding: 10px 16px;
+        padding: $modal-ft-py $modal-ft-px;
         text-align: right;
-        border-top: 1px solid #e8e8e8;
-        border-radius: 0 0 4px 4px;
-
-        button {
-          margin-left: 20px;
-        }
+        border-top: 1px solid $gray-300;
       }
     }
   }

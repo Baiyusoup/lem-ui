@@ -3,3 +3,7 @@
   padding: 24px;
   background: #fff;
 }
+
+.app-body {
+  height: calc(91vh - 64px);
+}

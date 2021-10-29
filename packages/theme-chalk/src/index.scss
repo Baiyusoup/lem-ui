@@ -1,6 +1,6 @@
 @import './reset.scss';
 @import './mixins/mixin';
-@import './variable/var.scss';
+@import './variable/vars.scss';
 @import './button.scss';
 @import 'layout.scss';
 @import 'menu.scss';
@@ -13,4 +13,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+body {
+  font-size: $font-size-base;
+  font-family: $font-family;
 }

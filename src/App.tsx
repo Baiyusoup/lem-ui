@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import './app.css'
 import Layout from '../packages/lem-ui/src/layout'
 import Menu from '../packages/lem-ui/src/menu'
@@ -6,6 +6,7 @@ import Modal from '../packages/lem-ui/src/modal'
 import Input from '../packages/lem-ui/src/input'
 import { UserAddOutlined } from '@ant-design/icons'
 import Pagination from '../packages/lem-ui/src/pagination'
+import Form, { FormStore } from '../packages/lem-ui/src/form'
 
 const { Header, Content, Footer, Aside } = Layout
 
@@ -23,6 +24,12 @@ function App() {
 
   const showModal = () => {
     setVisiable(true)
+  }
+
+  const store = new FormStore()
+
+  const handleSubmit = (e: FormEvent) => {
+    console.log(store.get())
   }
 
   return (
@@ -53,6 +60,19 @@ function App() {
         </Aside>
         <Content>
           <button onClick={showModal}>Click</button>
+          <div style={{ width: 250 }}>
+            <Form store={store} onSubmit={handleSubmit}>
+              <Form.Field name="username" label="用户名">
+                <Input />
+              </Form.Field>
+              <Form.Field name="password" label="密 码">
+                <Input />
+              </Form.Field>
+              <Form.Field>
+                <button>submit</button>
+              </Form.Field>
+            </Form>
+          </div>
           <Modal
             title="测试"
             centered={true}

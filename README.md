@@ -12,6 +12,6 @@
 - [ ] Dropdown
 - [x] Pagination
 - [x] input
-- [ ] Form
+- [x] Form
 - [x] Tag
 - [x] Modal

@@ -1,37 +1,14 @@
-import React, { FormEvent, useState } from 'react'
+import React from 'react'
 import './app.css'
 import Layout from '../packages/lem-ui/src/layout'
 import Menu from '../packages/lem-ui/src/menu'
-import Modal from '../packages/lem-ui/src/modal'
 import Input from '../packages/lem-ui/src/input'
-import { UserAddOutlined } from '@ant-design/icons'
 import Pagination from '../packages/lem-ui/src/pagination'
-import Form, { FormStore } from '../packages/lem-ui/src/form'
+import Plum from '../packages/lem-ui/src/plum'
 
 const { Header, Content, Footer, Aside } = Layout
 
 function App() {
-  const [visiable, setVisiable] = useState(false)
-
-  const handleCancel = () => {
-    console.log('cancel')
-    setVisiable(false)
-  }
-  const handleOk = () => {
-    console.log('ok')
-    setVisiable(false)
-  }
-
-  const showModal = () => {
-    setVisiable(true)
-  }
-
-  const store = new FormStore()
-
-  const handleSubmit = (e: FormEvent) => {
-    console.log(store.get())
-  }
-
   return (
     <Layout>
       <Header>
@@ -47,47 +24,10 @@ function App() {
           </Menu.SubMenu>
         </Menu>
       </Header>
-      <Layout isVertical={true}>
-        <Aside>
-          <Menu mode="vertical" defaultIndex={0}>
-            <Menu.Item index={0}>item 1</Menu.Item>
-            <Menu.Item index={1}>item 2</Menu.Item>
-            <Menu.SubMenu index="sub1" title="item 3">
-              <Menu.Item index={2}>item3-1</Menu.Item>
-              <Menu.Item index={3}>item3-2</Menu.Item>
-            </Menu.SubMenu>
-          </Menu>
-        </Aside>
-        <Content>
-          <button onClick={showModal}>Click</button>
-          <div style={{ width: 250 }}>
-            <Form store={store} onSubmit={handleSubmit}>
-              <Form.Field name="username" label="用户名">
-                <Input />
-              </Form.Field>
-              <Form.Field name="password" label="密 码">
-                <Input />
-              </Form.Field>
-              <Form.Field>
-                <button>submit</button>
-              </Form.Field>
-            </Form>
-          </div>
-          <Modal
-            title="测试"
-            centered={true}
-            visible={visiable}
-            onOk={handleOk}
-            onCancel={handleCancel}
-          >
-            <p>内容</p>
-            <p>
-              <UserAddOutlined />
-              用户
-            </p>
-          </Modal>
-        </Content>
-      </Layout>
+      <Content className="app-content">
+        Hello World
+        <Plum />
+      </Content>
       <Footer style={{ textAlign: 'center' }}>
         <Pagination total={50} />
         Ant Design ©2018 Created by Ant UED

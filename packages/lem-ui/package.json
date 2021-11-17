@@ -23,7 +23,8 @@
     "directory": "packages/lem-ui"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc"
   },
   "bugs": {
     "url": "https://github.com/Baiyusoup/lem-ui/issues"

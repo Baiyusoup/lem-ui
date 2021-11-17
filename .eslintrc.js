@@ -17,6 +17,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:react/jsx-runtime',
     // plugin:prettier/recommended 需要为最后一个扩展
     'plugin:prettier/recommended',
   ],

@@ -1,12 +1,12 @@
-import classNames from 'classnames'
-import React, { useEffect, useState } from 'react'
+import classNames from 'classnames';
+import React, { useEffect, useState } from 'react';
 
 export interface AsideProps extends React.HTMLAttributes<HTMLDivElement> {
-  width?: string
-  collapsible?: boolean
-  collapsed?: boolean
-  collapsedWidth?: string
-  onCollapse?: (collapsed: boolean) => void
+  width?: string;
+  collapsible?: boolean;
+  collapsed?: boolean;
+  collapsedWidth?: string;
+  onCollapse?: (collapsed: boolean) => void;
 }
 
 const Aside: React.FC<AsideProps> = ({
@@ -19,23 +19,21 @@ const Aside: React.FC<AsideProps> = ({
   onCollapse,
   ...props
 }) => {
-  const [collapse, setCollapse] = useState(collapsed)
-  const rawwidth = collapse ? collapsedWidth : width
-  const classNameString = classNames('lem-layout-sider', className)
+  const [collapse, setCollapse] = useState(collapsed);
+  const rawwidth = collapse ? collapsedWidth : width;
+  const classNameString = classNames('lem-layout-sider', className);
 
   const styles = {
     width: rawwidth,
-  }
+  };
 
   useEffect(() => {
-    setCollapse(collapsed)
-  }, [collapsed])
-
-  console.log(collapse)
+    setCollapse(collapsed);
+  }, [collapsed]);
 
   const handlerCollapse: React.MouseEventHandler = () => {
-    onCollapse && onCollapse(!collapse)
-  }
+    onCollapse && onCollapse(!collapse);
+  };
 
   return (
     <aside className={classNameString} style={styles} {...props}>
@@ -50,9 +48,9 @@ const Aside: React.FC<AsideProps> = ({
         </div>
       )}
     </aside>
-  )
-}
+  );
+};
 
-Aside.displayName = 'Aside'
+Aside.displayName = 'Aside';
 
-export default Aside
+export default Aside;

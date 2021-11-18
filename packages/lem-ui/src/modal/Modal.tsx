@@ -1,24 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import classNames from 'classnames'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import classNames from 'classnames';
 
 export interface ModalProps {
-  visible: boolean
-  title: string
-  style?: React.CSSProperties
-  width?: number
-  zIndex?: number
-  centered?: boolean
-  footer?: React.ReactNode
-  className?: string
-  okText?: string
-  cancelText?: string
-  closable?: boolean
-  onOk?: () => void
-  onCancel?: () => void
-  mask?: boolean
-  maskClosable?: boolean
-  children?: React.ReactNode
+  visible: boolean;
+  title: string;
+  style?: React.CSSProperties;
+  width?: number;
+  zIndex?: number;
+  centered?: boolean;
+  footer?: React.ReactNode;
+  className?: string;
+  okText?: string;
+  cancelText?: string;
+  closable?: boolean;
+  onOk?: () => void;
+  onCancel?: () => void;
+  mask?: boolean;
+  maskClosable?: boolean;
+  children?: React.ReactNode;
 }
 
 const Modal = (props: ModalProps) => {
@@ -39,11 +39,11 @@ const Modal = (props: ModalProps) => {
     mask = true,
     maskClosable = true,
     children,
-  } = props
+  } = props;
 
   const onMask = () => {
-    maskClosable && onCancel?.()
-  }
+    maskClosable && onCancel?.();
+  };
 
   return visible
     ? ReactDOM.createPortal(
@@ -53,7 +53,7 @@ const Modal = (props: ModalProps) => {
             onClick={onMask}
             style={{
               visibility: mask ? 'visible' : 'hidden',
-              zIndex: zIndex,
+              zIndex,
             }}
           />
           <div
@@ -94,9 +94,9 @@ const Modal = (props: ModalProps) => {
             </div>
           </div>
         </div>,
-        document.querySelector('body') as Element
+        document.querySelector('body') as Element,
       )
-    : null
-}
+    : null;
+};
 
-export default Modal
+export default Modal;

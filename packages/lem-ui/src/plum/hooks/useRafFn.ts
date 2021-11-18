@@ -1,35 +1,35 @@
-let isActive = false
+let isActive = false;
 
 export function useRafFn(fn: any, options: Record<string, any>) {
-  const { immediate = true } = options
+  const { immediate = true } = options;
   function loop() {
     if (!isActive) {
-      return
+      return;
     }
-    fn()
+    fn();
     if (window) {
-      window.requestAnimationFrame(loop)
+      window.requestAnimationFrame(loop);
     }
   }
 
   function resume() {
     if (!isActive) {
-      isActive = true
-      loop()
+      isActive = true;
+      loop();
     }
   }
 
   function pause() {
-    isActive = false
+    isActive = false;
   }
 
   if (immediate) {
-    resume()
+    resume();
   }
 
   return {
     isActive,
     pause,
     resume,
-  }
+  };
 }

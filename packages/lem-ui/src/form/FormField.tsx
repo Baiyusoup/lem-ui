@@ -1,17 +1,17 @@
-import React from 'react'
-import FormStoreContext from './FormStoreContext'
-import FormOptionsContext, { IFormOptions } from './FormOptionsContext'
-import useFieldChange from './hooks/useFieldChange'
-import { getPropName, getValueFromEvent } from './util'
+import React from 'react';
+import FormStoreContext from './FormStoreContext';
+import FormOptionsContext, { IFormOptions } from './FormOptionsContext';
+import useFieldChange from './hooks/useFieldChange';
+import { getPropName, getValueFromEvent } from './util';
 
 export interface FormFieldProps extends IFormOptions {
-  className?: string
-  label?: string
-  name?: string
-  valueProp?: string | ((type: any) => string)
-  valueGetter?: (...args: any[]) => any
-  suffix?: React.ReactNode
-  children?: React.ReactNode
+  className?: string;
+  label?: string;
+  name?: string;
+  valueProp?: string | ((type: any) => string);
+  valueGetter?: (...args: any[]) => any;
+  suffix?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const classes = {
@@ -26,7 +26,7 @@ const classes = {
   control: 'lem-form-field__control',
   message: 'lem-form-field__message',
   footer: 'lem-form-field__footer',
-}
+};
 
 const FormField: React.FC<FormFieldProps> = ({
   className,
@@ -38,37 +38,33 @@ const FormField: React.FC<FormFieldProps> = ({
   children,
   ...restProps
 }) => {
-  const store = React.useContext(FormStoreContext)
-  const options = React.useContext(FormOptionsContext)
-  const [value, setValue] = React.useState(
-    name && store ? store.get(name) : undefined
-  )
-  const [error, setError] = React.useState(
-    name && store ? store.error(name) : undefined
-  )
+  const store = React.useContext(FormStoreContext);
+  const options = React.useContext(FormOptionsContext);
+  const [value, setValue] = React.useState(name && store ? store.get(name) : undefined);
+  const [error, setError] = React.useState(name && store ? store.error(name) : undefined);
 
   const onChange = React.useCallback(
     (...args: any[]) => name && store && store.set(name, valueGetter(...args)),
-    [name, store, valueGetter]
-  )
+    [name, store, valueGetter],
+  );
 
   useFieldChange(store, name, () => {
-    setValue(store!.get(name))
-    setError(store!.error(name!))
-  })
+    setValue(store!.get(name));
+    setError(store!.error(name!));
+  });
 
-  let child: any = children
+  let child: any = children;
 
   if (name && store && React.isValidElement(child)) {
-    const prop = getPropName(valueProp, child && child.type)
-    const childProps = { [prop]: value, onChange }
-    child = React.cloneElement(child, childProps)
+    const prop = getPropName(valueProp, child && child.type);
+    const childProps = { [prop]: value, onChange };
+    child = React.cloneElement(child, childProps);
   }
 
   const { inline, compact, required, labelWidth, gutter, errorClassName } = {
     ...options,
     ...restProps,
-  }
+  };
 
   const classNames = [
     classes.field,
@@ -76,14 +72,14 @@ const FormField: React.FC<FormFieldProps> = ({
     compact ? classes.compact : '',
     required ? classes.required : '',
     error ? classes.error : '',
-    className ? className : '',
+    className || '',
     error ? errorClassName : '',
-  ].join('')
+  ].join('');
 
   const headerStyle = {
     width: labelWidth,
     marginRight: gutter,
-  }
+  };
 
   return (
     <div className={classNames}>
@@ -93,14 +89,12 @@ const FormField: React.FC<FormFieldProps> = ({
         </label>
       )}
       <div className={classes.container}>
-        <div className={classes.control + (label ? '' : ' lem-no-label')}>
-          {child}
-        </div>
+        <div className={classes.control + (label ? '' : ' lem-no-label')}>{child}</div>
         {error && <div className={classes.message}>{error}</div>}
       </div>
       {suffix !== undefined && <div className={classes.footer}>{suffix}</div>}
     </div>
-  )
-}
+  );
+};
 
-export default FormField
+export default FormField;

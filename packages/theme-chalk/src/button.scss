@@ -12,12 +12,7 @@
   vertical-align: middle;
   background-image: none;
   border: $btn-border-width solid transparent;
-  @include button-size(
-    $btn-padding-y,
-    $btn-padding-x,
-    $btn-font-size,
-    $border-radius
-  );
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $border-radius);
 
   box-shadow: $btn-box-shadow;
   cursor: pointer;
@@ -40,21 +35,11 @@
 }
 
 .lem-btn-lg {
-  @include button-size(
-    $btn-padding-y-lg,
-    $btn-padding-x-lg,
-    $btn-font-size-lg,
-    $border-radius-lg
-  );
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $border-radius-lg);
 }
 
 .lem-btn-sm {
-  @include button-size(
-    $btn-padding-y-sm,
-    $btn-padding-x-sm,
-    $btn-font-size-sm,
-    $border-radius-sm
-  );
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $border-radius-sm);
 }
 
 .lem-btn-primary {
@@ -66,14 +51,7 @@
 }
 
 .lem-btn-default {
-  @include button-style(
-    $white,
-    $gray-400,
-    $border-color,
-    $white,
-    $primary,
-    $primary
-  );
+  @include button-style($white, $gray-400, $border-color, $white, $primary, $primary);
 }
 
 .lem-btn-link {

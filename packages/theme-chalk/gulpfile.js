@@ -1,9 +1,10 @@
-const { series, src, dest } = require('gulp')
-const sassPlugin = require('gulp-sass')
-const DartSass = require('sass')
-const autoprefixer = require('gulp-autoprefixer')
+/* eslint-disable @typescript-eslint/no-require-imports */
+const { series, src, dest } = require('gulp');
+const sassPlugin = require('gulp-sass');
+const DartSass = require('sass');
+const autoprefixer = require('gulp-autoprefixer');
 
-const sassTransform = sassPlugin(DartSass)
+const sassTransform = sassPlugin(DartSass);
 
 // 编译scss文件
 function compile() {
@@ -12,14 +13,14 @@ function compile() {
     .pipe(
       autoprefixer({
         cascade: false,
-      })
+      }),
     )
-    .pipe(dest('./lib'))
+    .pipe(dest('./lib'));
 }
 
 // 移动字体图标
 function copyFonts() {
-  return src('./src/fonts/**').pipe(dest('./lib/fonts'))
+  return src('./src/fonts/**').pipe(dest('./lib/fonts'));
 }
 
-exports.build = series(compile, copyFonts)
+exports.build = series(compile, copyFonts);

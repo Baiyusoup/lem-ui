@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react'
-import FormStore from '../FormStore'
+import { useEffect } from 'react';
+import FormStore from '../FormStore';
 
 export default function useFieldChange<T>(
   store: FormStore<T> | undefined,
   name: string | undefined,
-  onChange: (name: string) => void
+  onChange: (name: string) => void,
 ) {
   useEffect(() => {
-    if (!name || !store) return
+    if (!name || !store) return;
     return store.subscribe((n) => {
       if (name === '*' || n === name || n === '*') {
-        onChange(name)
+        onChange(name);
       }
-    })
-  }, [name, store])
+    });
+  }, [name, store]);
 }

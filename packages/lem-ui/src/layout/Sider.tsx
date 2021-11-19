@@ -1,50 +1,56 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 export interface AsideProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: string;
   collapsible?: boolean;
   collapsed?: boolean;
   collapsedWidth?: string;
+  triggerLIcon?: React.ReactNode;
+  triggerRIcon?: React.ReactNode;
   onCollapse?: (collapsed: boolean) => void;
 }
 
 const Aside: React.FC<AsideProps> = ({
   children,
   className,
-  width = '200px',
   collapsed = false,
   collapsible = false,
-  collapsedWidth = '80px',
+  collapsedWidth = '46px',
+  width = '200px',
+  triggerLIcon,
+  triggerRIcon,
+  style,
   onCollapse,
   ...props
 }) => {
   const [collapse, setCollapse] = useState(collapsed);
-  const rawwidth = collapse ? collapsedWidth : width;
+  const rawWidth = collapse ? collapsedWidth : width;
   const classNameString = classNames('lem-layout-sider', className);
 
-  const styles = {
-    width: rawwidth,
+  const handle: React.MouseEventHandler = () => {
+    setCollapse(!collapse);
+    onCollapse?.(collapse);
   };
 
-  useEffect(() => {
-    setCollapse(collapsed);
-  }, [collapsed]);
+  const lIcon = triggerLIcon || '<';
+  const rIcon = triggerRIcon || '>';
 
-  const handlerCollapse: React.MouseEventHandler = () => {
-    onCollapse && onCollapse(!collapse);
+  const triggerStyle = {
+    width: rawWidth,
+  };
+
+  const wrapStyle = {
+    ...style,
+    ...triggerStyle,
   };
 
   return (
-    <aside className={classNameString} style={styles} {...props}>
-      <div className="lem-layout-sider-children">{children}</div>
+    <aside className={classNameString} style={wrapStyle} {...props}>
+      <div className="lem-layout-sider_inner">{children}</div>
       {collapsible && (
-        <div
-          onClick={handlerCollapse}
-          style={{ width: rawwidth }}
-          className="lem-layout-sider-trigger"
-        >
-          {collapse ? '>' : '<'}
+        <div onClick={handle} style={triggerStyle} className="lem-layout-sider-trigger">
+          {collapse ? rIcon : lIcon}
         </div>
       )}
     </aside>

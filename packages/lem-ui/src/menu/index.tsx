@@ -28,9 +28,9 @@ const InternalMenu: React.FC<MenuProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
   const classNameString = classNames('lem-menu', className, {
-    'lem-menu-horizontal': mode === 'horizontal',
-    'lem-menu-overflow': mode === 'horizontal',
-    'lem-menu-vertical': mode === 'vertical',
+    'lem-menu--overflow': mode === 'horizontal',
+    'lem-menu--vertical': mode === 'vertical',
+    'lem-menu--horizontal': mode === 'horizontal',
   });
 
   const handleClick = (selectedIndex: number) => {

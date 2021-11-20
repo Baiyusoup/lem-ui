@@ -1,77 +1,74 @@
-@import './variable/vars.scss';
-
-@mixin menuItemSize($H, $l-h, $mx, $my, $px, $py) {
-  height: $H;
+@mixin itemSize($height, $lineHeight, $mx, $my, $px, $py) {
+  height: $height;
   margin: $my $mx;
   padding: $py $px;
-  line-height: $l-h;
+  line-height: $lineHeight;
 }
+
+$menu-color: #adb5bd;
+$itemHoverColor: #000;
 
 .lem-menu {
+  padding: 0;
   box-sizing: border-box;
-  margin: $menu-mgy $menu-mgx;
-  padding: $menu-py $menu-px;
-  color: $menu-color;
   list-style: none;
-  background: $menu-bg;
   outline: none;
-}
+  color: $menu-color;
 
-.lem-menu-item,
-.lem-menu-submenu-title {
-  display: block;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.1s;
-  @include menuItemSize(
-    $menu-item-h,
-    $menu-item-l-h,
-    $menu-item-mgx,
-    $menu-item-mgy,
-    $menu-item-px,
-    $menu-item-py
-  );
-}
-
-.lem-menu-item:hover,
-.lem-menu-submenu-title:hover,
-.lem-menu-item-selected {
-  color: $menu-item-selected-color;
-}
-
-.lem-menu-submenu-horizontal {
-  & > .lem-menu-sub {
-    position: absolute;
-    top: 52px;
-  }
-}
-
-.lem-menu-vertical {
-  .lem-menu-item,
-  .lem-menu-submenu-title {
+  &--overflow {
     display: flex;
-    align-items: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    @include menuItemSize(
-      $menu-vertical-item-h,
-      $menu-vertical-item-l-h,
-      $menu-item-mgx,
-      $menu-item-mgy,
-      $menu-item-px,
-      $menu-item-py
-    );
   }
 
-  .lem-menu-sub .lem-menu-item {
-    padding-left: $menu-vertical-item-px;
+  &-submenu-title,
+  &-item {
+    display: block;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.1s;
+    @include itemSize(46px, 46px, 0, 0, 20px, 0);
+
+    &:hover {
+      color: $itemHoverColor;
+    }
   }
-}
 
-.lem-menu-hidden {
-  display: none;
-}
+  &-item--selected {
+    color: $itemHoverColor;
+  }
 
-.lem-menu-overflow {
-  display: flex;
+  &-submenu {
+    position: relative;
+
+    &__inner {
+      height: auto;
+      transition: all 200ms ease;
+    }
+
+    &--close {
+      .lem-menu-submenu__inner {
+        height: 0;
+        opacity: 0;
+      }
+    }
+
+    &--open {
+      .lem-menu-submenu__inner {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--horizontal {
+    .lem-menu-submenu__inner {
+      position: absolute;
+      top: 46px;
+      box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    }
+  }
+
+  &--vertical {
+    .lem-menu-submenu__inner {
+      padding-left: 40px;
+    }
+  }
 }

@@ -9,7 +9,7 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLLIElement> {
 const MenuItem: React.FC<MenuItemProps> = ({ index, className, children, ...props }) => {
   const context = useContext(MenuContext);
   const classNameString = classNames('lem-menu-item', className, {
-    'lem-menu-item-selected': context.index === index,
+    'lem-menu-item--selected': context.index === index,
   });
 
   const handleClick: React.MouseEventHandler = () => {

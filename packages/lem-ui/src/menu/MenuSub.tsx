@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { useContext, useState } from 'react';
+import { AnimateHeight } from './AnimateHeight';
 import MenuContext from './MenuContext';
 import { MenuItemProps } from './MenuItem';
 
@@ -11,21 +12,18 @@ export interface SubMenuProps extends React.HTMLAttributes<HTMLLIElement> {
 const SubMenu: React.FC<SubMenuProps> = ({ index, title, className, children, ...props }) => {
   const context = useContext(MenuContext);
   const { mode, currentSubMenuOpenKey } = context;
-  const [subMenuStatus, setSubMenuStatus] = useState(currentSubMenuOpenKey === index);
+  const [isExpand, setIsExpand] = useState(currentSubMenuOpenKey === index);
 
   const subMenuClassName = classNames('lem-menu-submenu', className, {
-    'lem-menu-submenu-vertical': mode === 'vertical',
-    'lem-menu-submenu-horizontal': mode === 'horizontal',
-    'lem-menu-submenu-open': subMenuStatus,
+    'lem-menu-submenu--vertical': mode === 'vertical',
+    'lem-menu-submenu--open': isExpand,
+    'lem-menu-submenu--close': !isExpand,
   });
 
-  const menuItemClassName = classNames('lem-menu lem-menu-sub', {
-    'lem-menu-vertical': mode === 'vertical',
-    'lem-menu-hidden': !subMenuStatus,
-  });
+  const menuItemClassName = classNames('lem-menu lem-menu-submenu__inner');
 
   const handleClick = () => {
-    setSubMenuStatus(!subMenuStatus);
+    setIsExpand(!isExpand);
   };
 
   const renderChildren = () => {
@@ -37,7 +35,11 @@ const SubMenu: React.FC<SubMenuProps> = ({ index, title, className, children, ..
         return null;
       }
     });
-    return <ul className={menuItemClassName}>{childComponent}</ul>;
+    return (
+      <AnimateHeight duration={200} height={isExpand ? 'auto' : 0}>
+        <ul className={menuItemClassName}>{childComponent}</ul>;
+      </AnimateHeight>
+    );
   };
 
   return (
